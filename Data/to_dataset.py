@@ -25,6 +25,7 @@ parser.add_argument('--tag', type=str, default='blue',
                     help='tag to generate dataset (default: blue)')
 parser.add_argument('--scale', type=int, default=2,
                     help='Augmentation scale (default: 2)')
+args = parser.parse_args()
 
 # split images to train/valid/test in ./dataset
 def data_split():
@@ -249,7 +250,6 @@ def loadGloveModel(gloveFile):
 #     np.save(TAG_PATH+'x_test.npy', np.array(x_test))
 
 if __name__ == "__main__":
-    args = parser.parse_args()
     print('-'*10)
     print(args)
     print('-'*10)
