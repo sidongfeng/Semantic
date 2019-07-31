@@ -26,13 +26,6 @@ parser.add_argument('--tag', type=str, default='blue',
 parser.add_argument('--scale', type=int, default=2,
                     help='Augmentation scale (default: 2)')
 
-def plat():
-    images = os.listdir("./platform/")
-    for img in images:
-        if img == ".DS_Store":
-            continue
-        
-
 # split images to train/valid/test in ./dataset
 def data_split():
     # read table.csv

@@ -8,6 +8,8 @@ from loader import image_generator
 from loader import tag_generator
 # from earlystop import EarlyStopping
 import model
+sys.path.append('../Data/')
+import to_dataset
 
 WORD2VEC = "../Data/glove.6B.50d.txt"
 FILE = "../Data/Metadata.csv"
@@ -42,8 +44,6 @@ print('-'*10)
 print(args)
 print('-'*10)
 
-sys.path.append('../Data/')
-import to_dataset
 # data loader
 img_tags = to_dataset.preprocess(FILE)
 w2v = to_dataset.loadGloveModel(WORD2VEC)
