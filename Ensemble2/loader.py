@@ -5,11 +5,8 @@ from torchvision import datasets
 import numpy as np
 import random
 
-DATA_PATH_TRAIN = '../Data/dataset/train/'
-DATA_PATH_VALID = '../Data/dataset/valid/'
-DATA_PATH_TEST = '../Data/dataset/test/'
-
 VECTOR_DIM = 50
+BATCH_SZ = 32
 
 class ImageFolderWithPaths(datasets.ImageFolder):
     """Custom dataset that includes image file paths. Extends
@@ -27,7 +24,11 @@ class ImageFolderWithPaths(datasets.ImageFolder):
         return tuple_with_path
 
 # Image Dataloader
-def image_generator(BATCH_SZ=32):
+def image_generator(tag, BATCH_SZ=BATCH_SZ):
+    DATA_PATH_TRAIN = '../Data/'+tag+'/train/'
+    DATA_PATH_VALID = '../Data/'+tag+'/valid/'
+    DATA_PATH_TEST = '../Data/'+tag+'/test/'
+
     transform = torchvision.transforms.Compose([
         torchvision.transforms.RandomResizedCrop(224),
         torchvision.transforms.ToTensor(),
@@ -92,7 +93,8 @@ def tag_generator(paths, img_tags, model):
 
 if __name__ == "__main__":
     """ generate image loader """
-    train_loader, valid_loader, test_loader = image_generator()
+    train_loader, valid_loader, test_loader = image_generator('yellow')
+    print(train_loader.dataset[0])
     # # display image
     # import PIL
     # img = torchvision.transforms.ToPILImage()(train_loader.dataset[0][0]).convert('RGB')

@@ -8,18 +8,16 @@ from loader import image_generator
 from loader import tag_generator
 # from earlystop import EarlyStopping
 import model
-sys.path.append('../Data/')
-import to_dataset
-
-WORD2VEC = "../Data/glove.6B.50d.txt"
-FILE = "../Data/Metadata.csv"
+from function import load_image_tags
+from function import loadGloveModel
+from function import loadCategory
 
 # Device configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 parser = argparse.ArgumentParser(description='Recovering Missing Semantics')
-parser.add_argument('--dropout', type=float, default=0.2,
-                    help='dropout applied to layers (default: 0.2)')
+parser.add_argument('--tag', type=str, default='blue',
+                    help='model to train (default: blue)')
 parser.add_argument('--epochs', type=int, default=100,
                     help='upper epoch limit (default: 50)')
 parser.add_argument('--lr', type=float, default=1e-4,
@@ -41,20 +39,20 @@ args = parser.parse_args()
 # args = parser.parse_args(args=[])
 torch.manual_seed(args.seed)
 print('-'*10)
+if args.tag not in loadCategory():
+    print("Invalid Tag!!!")
+    exit()
 print(args)
 print('-'*10)
 
 # data loader
-img_tags = to_dataset.preprocess(FILE)
-w2v = to_dataset.loadGloveModel(WORD2VEC)
-train_loader, valid_loader, test_loader = image_generator()
+img_tags = load_image_tags(args.tag)
+w2v = loadGloveModel()
+train_loader, valid_loader, test_loader = image_generator(args.tag)
 
 # Hyperparameters
 epochs = args.epochs
 learning_rate = args.lr
-dropout = args.dropout
-classes = 2
-batch_size = 32
 lr_decay_rate = 0.1
 # Models to choose from [resnet, alexnet, vgg, squeezenet, densenet, inception]
 # Flag for feature extracting. When False, we finetune the whole model,
@@ -62,8 +60,8 @@ lr_decay_rate = 0.1
 model_name = "resnet"
 feature_extract = True
 
-model_image, _ = model.initialize_model(model_name, 50, feature_extract, use_pretrained=True)
-model_tag = model.Net()
+model_image, _ = model.initialize_model(model_name, feature_extract, use_pretrained=True)
+model_tag = model.CNN()
 model = model.MyEnsemble(model_image, model_tag)
 model = model.to(device)
 # print(model)
