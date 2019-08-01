@@ -60,7 +60,7 @@ lr_decay_rate = 0.1
 # Flag for feature extracting. When False, we finetune the whole model,
 #   when True we only update the reshaped layer params
 model_name = "resnet"
-feature_extract = True
+feature_extract = args.mode
 
 model_image, _ = model.initialize_model(model_name, feature_extract, use_pretrained=args.pretrain)
 model_tag = model.CNN()
