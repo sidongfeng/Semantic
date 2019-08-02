@@ -34,11 +34,12 @@ def load_image_tags(tag,f=FILE):
             # remove UI tags
             string = [x for x in string if x not in category['ui_tags']]
             string = [x for x in string if x not in category[tag]]
-            string = " ".join(string)
-            string = string.split(' ')
+            string = [x.replace(' ','') for x in string]
+            string = list(set(string))
             string = [x for x in string if len(x) > 1]
             string = [x for x in string if not x.isdigit()]
-            string = list(set(string))
+            string = [x.lower() for x in string]
+            string.sort(key = len)
         except:
             string = []
         img_tags[img] = string

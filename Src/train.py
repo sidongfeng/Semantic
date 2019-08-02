@@ -22,6 +22,8 @@ parser.add_argument('--epochs', type=int, default=100,
                     help='upper epoch limit (default: 50)')
 parser.add_argument('--lr', type=float, default=1e-4,
                     help='initial learning rate (default: 1e-4)')
+parser.add_argument('--weight', type=float, default=5e-3,
+                    help='initial weight decay (default: 5e-3)')
 parser.add_argument('--optim', type=str, default='Adam',
                     help='optimizer to use (default: Adam)')
 parser.add_argument('--seed', type=int, default=42,
@@ -92,7 +94,7 @@ else:
             print("\t",name)
 print('-'*10)
 
-optimizer = getattr(optim, args.optim)(params_to_update, lr=learning_rate, weight_decay=5e-4)
+optimizer = getattr(optim, args.optim)(params_to_update, lr=learning_rate, weight_decay=args.weight)
 criterion = nn.CrossEntropyLoss()
 
 # initialize the early_stopping object
