@@ -3,12 +3,15 @@ import torchvision.models as models
 import torch.nn as nn
 import torch.nn.functional as F
 
+RESNET_OUTPUT = 50
+CNN_OUTPUT = 50
+
 def set_parameter_requires_grad(model, feature_extracting):
     if feature_extracting:
         for param in model.parameters():
             param.requires_grad = False
 
-def initialize_model(model_name, feature_extract, num_classes=50, use_pretrained=True):
+def initialize_model(model_name, feature_extract, num_classes=RESNET_OUTPUT, use_pretrained=True):
     # Initialize these variables which will be set in this if statement. Each of these
     #   variables is model specific.
     model_ft = None
@@ -87,7 +90,7 @@ class CNN(nn.Module):
         # self.conv3 = nn.Conv2d(32, 32, kernel_size=2)
         self.conv2_drop = nn.Dropout2d()
         self.fc1 = nn.Linear(3200, 100)
-        self.fc2 = nn.Linear(100, 50)
+        self.fc2 = nn.Linear(100, CNN_OUTPUT)
 
     def forward(self, x):
         x = F.relu(F.max_pool2d(self.conv1(x), 2))
@@ -103,7 +106,7 @@ class MyEnsemble(nn.Module):
         super(MyEnsemble, self).__init__()
         self.modelA = modelA
         self.modelB = modelB
-        self.classifier = nn.Linear(100, 2)
+        self.classifier = nn.Linear(RESNET_OUTPUT+CNN_OUTPUT, 2)
         
     def forward(self, x1, x2):
         x1 = self.modelA(x1)

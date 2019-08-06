@@ -29,8 +29,16 @@ def image_generator(tag, BATCH_SZ=BATCH_SZ):
     DATA_PATH_VALID = '../Data/'+tag+'/valid/'
     DATA_PATH_TEST = '../Data/'+tag+'/test/'
 
-    transform = torchvision.transforms.Compose([
+    transform_train = torchvision.transforms.Compose([
         torchvision.transforms.RandomResizedCrop(224),
+        torchvision.transforms.ToTensor(),
+        # Cutout(n_holes=1, length=16),
+        torchvision.transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)), #R,G,B每层的归一化用到的均值和方差
+    ])
+
+    transform_valid = torchvision.transforms.Compose([
+        torchvision.transforms.Resize(224),
+        torchvision.transforms.CenterCrop(224),
         torchvision.transforms.ToTensor(),
         # Cutout(n_holes=1, length=16),
         torchvision.transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)), #R,G,B每层的归一化用到的均值和方差
@@ -43,19 +51,19 @@ def image_generator(tag, BATCH_SZ=BATCH_SZ):
     # img.show() 
 
     train_loader = torch.utils.data.DataLoader(
-        dataset=ImageFolderWithPaths(root=DATA_PATH_TRAIN, transform=transform),
+        dataset=ImageFolderWithPaths(root=DATA_PATH_TRAIN, transform=transform_train),
         batch_size=BATCH_SZ, 
         shuffle=True,               
     )
 
-    input = ImageFolderWithPaths(root=DATA_PATH_VALID, transform=transform)
+    input = ImageFolderWithPaths(root=DATA_PATH_VALID, transform=transform_valid)
     valid_loader = torch.utils.data.DataLoader(
         dataset=input,
         batch_size=len(input), 
         shuffle=True,               
     )
 
-    input = ImageFolderWithPaths(root=DATA_PATH_TEST, transform=transform)
+    input = ImageFolderWithPaths(root=DATA_PATH_TEST, transform=transform_valid)
     test_loader = torch.utils.data.DataLoader(
         dataset=input,
         batch_size=len(input), 
@@ -95,9 +103,10 @@ if __name__ == "__main__":
     """ generate image loader """
     train_loader, valid_loader, test_loader = image_generator('yellow')
     print(train_loader.dataset[0])
-    # # display image
+    # display image
     # import PIL
-    # img = torchvision.transforms.ToPILImage()(train_loader.dataset[0][0]).convert('RGB')
+    # print(valid_loader.dataset[0][2])
+    # img = torchvision.transforms.ToPILImage()(valid_loader.dataset[0][0]).convert('RGB')
     # img.show() 
     # # print class_to_idx
     # print(train_loader.dataset.class_to_idx)

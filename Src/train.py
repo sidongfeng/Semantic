@@ -35,7 +35,7 @@ parser.add_argument('--mode', action='store_false',
 # parser.add_argument('--early', action='store_false',
 #                     help='use Early Stop (default: true)')
 parser.add_argument('--lr_decay', action='store_true',
-                    help='lr decay (default: true)')
+                    help='lr decay (default: false)')
 parser.add_argument('--pretrain', action='store_false',
                     help='use pretrain network (default: true)')
 
@@ -210,7 +210,7 @@ if __name__ == "__main__":
         #         print("Early stopping")
         #         break
 
-        if args.lr_decay and epoch%10==0:
+        if args.lr_decay and epoch%50==0:
             for param_group in optimizer.param_groups:
                 param_group['lr'] *= lr_decay_rate
             print(param_group['lr'])
