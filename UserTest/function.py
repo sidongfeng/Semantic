@@ -34,7 +34,7 @@ def load_image_tags(f=FILE):
         img, string = row[0], row[1]
         try:
             string = string.split('+')
-            string = [x for x in string if x not in category['ui_tags']]
+            string = [x for x in string if x not in category['ui']]
             tags = [k for k,v in category.items() if len(intersection(string,v))>0]
             string = [x.replace(' ','') for x in string]
             string = list(set(string))
@@ -64,9 +64,32 @@ def loadGloveModel(gloveFile=WORD2VEC):
     # print("Done.",len(model)," words loaded!")
     return model
 
+def initial_csv():
+    df = pd.read_csv(FILE)
+    return df
+
+def update_csv(img_ids,t,df):
+    for id in img_ids:
+        predict_tags = df.loc[df["id"]== id,"predict"].item()
+        if predict_tags == " ":
+            df.loc[df["id"]== id,"predict"] = t
+        else:
+            df.loc[df["id"]== id,"predict"] = predict_tags + '+' + t
+    return df
+
+def write_csv(df):
+    fo = open("result.csv","w")
+    fo.write(df.to_csv(index=False))
+    fo.close()
+
 if __name__ == "__main__":
     # loading dictionary of tags for each image, regardless the related tags
-    print(load_image_tags()["direct"])
+    # print(load_image_tags()["direct"])
 
     # loading a dictionary for Glove
     # loadGloveModel()
+
+    # a = initial_csv()
+    # a = update_csv([3919542],"red",a)
+    # write_csv(a)
+    None

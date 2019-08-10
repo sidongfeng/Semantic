@@ -32,7 +32,7 @@ def load_image_tags(tag,f=FILE):
         try:
             string = string.split('   ')
             # remove UI tags
-            string = [x for x in string if x not in category['ui_tags']]
+            string = [x for x in string if x not in category['ui']]
             string = [x for x in string if x not in category[tag]]
             string = [x.replace(' ','') for x in string]
             string = list(set(string))

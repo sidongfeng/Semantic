@@ -24,6 +24,14 @@ def initialize_model(model_name, feature_extract, num_classes=RESNET_OUTPUT, use
         set_parameter_requires_grad(model_ft, feature_extract)
         num_ftrs = model_ft.fc.in_features
         model_ft.fc = nn.Linear(num_ftrs, num_classes)
+        # pretrained_dict = torch.load('bu.pt',map_location=torch.device('cpu'))
+        # model_dict = model_ft.state_dict()
+        # # 1. filter out unnecessary keys
+        # pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict and v.shape ==model_dict[k].shape}
+        # # 2. overwrite entries in the existing state dict
+        # model_dict.update(pretrained_dict) 
+        # # 3. load the new state dict
+        # model_ft.load_state_dict(model_dict)
         input_size = 224
 
     elif model_name == "alexnet":
@@ -120,4 +128,4 @@ if __name__ == "__main__":
     model_ft, input_size = initialize_model('resnet', num_classes=50, feature_extract=True, use_pretrained=True)
 
     # Print the model we just instantiated
-    print(model_ft)
+    # print(model_ft)
