@@ -18,7 +18,7 @@ class ImageNetPolicy(object):
     """
 
     def __init__(self, fillcolor=(128, 128, 128)):
-        choices = ["shearX"]
+        choices = ["shearX","posterize","autocontrast","rotate","color","contrast","sharpness"]
         self.policies = [SubPolicy(0.5, c, random.randrange(0,6), 0.5, c, random.randrange(0,6), fillcolor) for c in choices]
 
     def __call__(self, img):

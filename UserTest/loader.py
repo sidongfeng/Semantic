@@ -33,7 +33,7 @@ def image_generator():
         torchvision.transforms.Resize(224),
         torchvision.transforms.CenterCrop(224),
         torchvision.transforms.ToTensor(),
-        # torchvision.transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)), #R,G,B每层的归一化用到的均值和方差
+        torchvision.transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)), #R,G,B每层的归一化用到的均值和方差
     ])
 
     test_loader = ImageFolderWithPaths(root=DATA_PATH_TEST, transform=transform)

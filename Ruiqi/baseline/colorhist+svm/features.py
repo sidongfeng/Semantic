@@ -8,6 +8,7 @@ Created on Wed Mar 27 15:33:16 2019
 import matplotlib
 import numpy as np
 from scipy.ndimage import uniform_filter
+from PIL import Image
 
 
 def extract_features(imgs, feature_fns, verbose=False):
@@ -151,5 +152,9 @@ def color_histogram_hsv(im, nbin=10, xmin=0, xmax=255, normalized=True):
   # return histogram
   return imhist
 
+img = Image.open( "/Users/mac/Documents/Python/Semantic/Data/images/0_1_4039454.png" )
+img.load()
+data = np.asarray( img, dtype="float")
+print(color_histogram_hsv(data))
 
 pass

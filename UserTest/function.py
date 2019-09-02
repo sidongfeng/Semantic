@@ -89,7 +89,8 @@ if __name__ == "__main__":
     # loading a dictionary for Glove
     # loadGloveModel()
 
-    # a = initial_csv()
+    a = initial_csv()
+    print(a)
     # a = update_csv([3919542],"red",a)
     # write_csv(a)
     None
