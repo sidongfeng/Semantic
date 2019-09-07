@@ -2,6 +2,13 @@ import torchvision.models as models
 import torch.nn as nn
 import torch
 
+class Identity(nn.Module):
+    def __init__(self):
+        super(Identity, self).__init__()
+        
+    def forward(self, x):
+        return x
+
 def set_parameter_requires_grad(model, feature_extracting):
     if feature_extracting:
         for param in model.parameters():
@@ -19,7 +26,12 @@ def initialize_model(model_name, num_classes, feature_extract, use_pretrained=Tr
         model_ft = models.resnet18(pretrained=use_pretrained)
         set_parameter_requires_grad(model_ft, feature_extract)
         num_ftrs = model_ft.fc.in_features
-        model_ft.fc = nn.Linear(num_ftrs, num_classes)
+        model_ft.layer2 = Identity()
+        model_ft.layer3 = Identity()
+        model_ft.layer4 = Identity()
+        model_ft.fc = Identity()
+        # model_ft.drop = nn.Dropout(0.8)
+        model_ft.fc1 = nn.Linear(num_ftrs, num_classes)
         input_size = 224
 
     elif model_name == "alexnet":
@@ -90,8 +102,9 @@ def freeze(model_ft,layer_no):
 if __name__ == "__main__":
     # Initialize the model for this run
     model_ft, input_size = initialize_model('resnet', num_classes=2, feature_extract=False, use_pretrained=True)
+    print(model_ft)
 
-    model_ft = freeze(model_ft,8)
+    model_ft = freeze(model_ft,5)
     params_to_update = model_ft.parameters()
     print("Params to learn:")
     params_to_update = []

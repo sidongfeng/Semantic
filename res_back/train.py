@@ -14,16 +14,18 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 parser = argparse.ArgumentParser(description='Recovering Missing Semantics')
 parser.add_argument('--tag', type=str, default='blue',
                     help='model to train (default: blue)')
-parser.add_argument('--epochs', type=int, default=1,
-                    help='upper epoch limit (default: 100)')
+parser.add_argument('--epochs', type=int, default=200,
+                    help='upper epoch limit (default: 200)')
 parser.add_argument('--lr', type=float, default=1e-4,
                     help='initial learning rate (default: 1e-4)')
+parser.add_argument('--weight', type=float, default=1e-1,
+                    help='initial weight decay (default: 1e-1)')
 parser.add_argument('--optim', type=str, default='Adam',
                     help='optimizer to use (default: Adam)')
 parser.add_argument('--seed', type=int, default=42,
                     help='random seed (default: 42)')
-parser.add_argument('--pretrain', action='store_true',
-                    help='use pretrain network (default: false)')
+parser.add_argument('--pretrain', action='store_false',
+                    help='use pretrain network (default: true)')
 
 args = parser.parse_args()
 torch.manual_seed(args.seed)
@@ -35,6 +37,7 @@ train_loader, valid_loader, test_loader = data_generator(args.tag)
 # Hyperparameters
 epochs = args.epochs
 learning_rate = args.lr
+weight_decay = args.weight
 num_classes = 2
 # Models to choose from [resnet, alexnet, vgg, squeezenet, densenet, inception]
 model_name = "resnet"
@@ -43,7 +46,7 @@ model_name = "resnet"
 feature_extract = False
 
 model, input_size = initialize_model(model_name, num_classes, feature_extract, use_pretrained=args.pretrain)
-model = freeze(model,8)
+model = freeze(model,5)
 model = model.to(device)
 # print(model)
 
@@ -65,7 +68,7 @@ else:
         if param.requires_grad == True:
             print("\t",name)
 
-optimizer = getattr(optim, args.optim)(params_to_update, lr=learning_rate, weight_decay=5e-4)
+optimizer = getattr(optim, args.optim)(params_to_update, lr=learning_rate, weight_decay=weight_decay)
 criterion = nn.CrossEntropyLoss()
 
 ######################    

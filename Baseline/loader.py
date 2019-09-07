@@ -67,7 +67,6 @@ def sift_loader():
     import cv2
     df_train = pd.DataFrame(columns=['label']+['feature'+str(x) for x in range(input_features)])
     df_test = pd.DataFrame(columns=['label']+['feature'+str(x) for x in range(input_features)])
-    df_test["name"] = ' '
 
     no = 0
     tno = 0
@@ -109,9 +108,9 @@ def sift_loader():
                 im = cv2.imread(DATA_PATH+'/'+stage+'/'+label+'/'+img)
                 feature = calcSiftFeature(im)
                 featVec = calcFeatVec(feature, centers)
-                df_test.loc[tno] = [0 if label=='n' else 1]+featVec.tolist()+[img]
+                df_test.loc[tno] = [0 if label=='n' else 1]+featVec.tolist()
                 tno+=1
-
+    
     return df_train,df_test
 
 def data_loader(tag,ftype):
@@ -121,7 +120,7 @@ def data_loader(tag,ftype):
     DATA_PATH = "../Data/"+tag
 
     if ftype == 'hist':
-        input_features = 9216
+        input_features = 7056
     elif ftype == 'hsv':
         input_features = 10
     else:
@@ -134,7 +133,7 @@ def data_loader(tag,ftype):
 
 
 if __name__ == "__main__":
-    df_train, df_test = data_loader('music','sift')
+    df_train, df_test = data_loader('pink','sift')
     print(df_train, df_test)
 
     

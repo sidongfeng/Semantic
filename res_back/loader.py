@@ -12,7 +12,8 @@ def data_generator(tag,BATCH_SZ=32):
     transform = torchvision.transforms.Compose([
         torchvision.transforms.Resize(224),
         torchvision.transforms.ToTensor(),
-        torchvision.transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)), #R,G,B每层的归一化用到的均值和方差
+        torchvision.transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                 std=[0.229, 0.224, 0.225]), #R,G,B每层的归一化用到的均值和方差
     ])
 
     # # show image

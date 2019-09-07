@@ -39,10 +39,34 @@ def not_plat():
             f.write("%s,%s\n"%(key,img_list[key]))
     f.close()
 
+def test():
+    import pandas as pd
+    df = pd.read_csv('table.csv',header=None)
+    
+    imgs = os.listdir('platform')
+    try:
+        imgs.remove('.DS_Store')
+    except:
+        pass
+    for img in imgs:
+        if img.startswith('1_'):
+            if len(df[df[0]==img]) == 0:
+                df = df.append({0: img, 1:'mobile'}, ignore_index=True)
+            else:
+                df.loc[df[0] == img, [1]] = df.loc[df[0] == img, [1]]+'+mobile'
+        else:
+            if len(df[df[0]==img]) == 0:
+                df = df.append({0: img, 1:'website'}, ignore_index=True)
+            else:
+                df.loc[df[0] == img, [1]] = df.loc[df[0] == img, [1]]+'+website'
+
+    f = open('table1.csv','w')
+    f.write(df.to_csv(index=False))
+    f.close()
 
 
 
 
 if __name__ == "__main__":
     # generate not platform images
-    not_plat()
+    test()

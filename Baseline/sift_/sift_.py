@@ -1,16 +1,10 @@
 import cv2
 import numpy as np
 
-a=0
-
 def calcSiftFeature(img):
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 	sift = cv2.xfeatures2d.SIFT_create(200) # max number of SIFT points is 200
 	kp, des = sift.detectAndCompute(gray, None)
-	global a
-	img=cv2.drawKeypoints(img,kp,img,flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-	cv2.imwrite('/Users/mac/Documents/Python/Semantic/Baseline/sift_/io/'+str(a)+'.png',img)
-	a+=1
 	return des
  
 def calcFeatVec(features, centers):

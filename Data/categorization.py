@@ -36,7 +36,7 @@ flat = ["flat","flat design","flat_design","flatdesign","flat ui","flat_ui_desig
 gradient = ["color gradient", "color_gradient", "gradient color","gradient"]
 illustration = ["illustration"]
 ui = ["ui", "user interface","user-interface", "user_interface", "user interface design", "user_interface_design", "uidesign", "ui design", "ui_design", "uiuxdesign", "uxuidesign", "uiux design", "uxui design", "uiux_design", "uxui_design", "uiux-design", "uxui-design", "uiux", "uidesigner", "ui_ux", "ui.ux", "ux.ui", "uxui", "ui-ux", "ux-ui", "app-ui", "daily ui", "dailyui", "daily_ui", "30_days_of_ui", "30 days of ui"]
-mobile = ["iphone", "iphonex","iphone_x", "iphone8", "iphone7", "ios_11","iphone_app","ipad_pro", "travelapp", "ios11","app", "application", "android app", "app-design",  "app design","app_design", "appdesign","ios app", "ios_app", "ios_design", "android_app", "app_development","mobile_application", "application_design", "mobile app","mobileapp","mobile", "mobile design", "mobiledesign", "mobile website", "mobilewebsite","mobile_web"]
+mobile = ["iphone", "iphonex","iphone_x", "iphone8", "iphone7", "ios_11","iphone_app","ipad_pro", "ios11","app", "application", "android app", "app-design",  "app design","app_design", "appdesign","ios app", "ios_app", "ios_design", "android_app", "app_development","mobile_application", "application_design", "mobile app","mobileapp","mobile", "mobile design", "mobiledesign", "mobile website", "mobilewebsite","mobile_web"]
 website = ["website","webdesigner", "web-design", "design_for_website","websitedesign", "web app","webpage", "website", "web", "website design","webpage design"]
 # , "mobile_application","mobile app","mobileapp", "mobile", "mobile design", "mobiledesign"
 
@@ -46,3 +46,11 @@ def categorization():
     for t in tags:
         d[t] = eval(t)
     return d
+
+def type__():
+    t = {'plat':['mobile','website'],
+            'color':['grey','brown','pink','black','white','green','blue','red','yellow'],
+            'function':['book','medical','weather','social','sport','news','health','game','finance','travel','food','ecommerce','music'],
+            'screen_fuc':['search','profile','signup','checkout','landing'],
+            'screen_lay':['chart','grid','form','list_','dashboard']}
+    return t
