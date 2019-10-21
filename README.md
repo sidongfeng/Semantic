@@ -46,6 +46,5 @@ Please follow the instructions in RecoverTags.
 
 This project is contributed by [Sidong Feng](https://github.com/u6063820).
 
-<!-- ## License
-
-TODO: Write license -->
+## License
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
