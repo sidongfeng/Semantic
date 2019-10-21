@@ -1,7 +1,7 @@
 # Recovering Tags in Dribbble design
 
-## Overview
-Graphical User Interface (GUI) is ubiquitous, but good GUI design is challenging and time-consuming. Despite the enormous amount of UI designs existed online, it is still difficult for designers to efficiently find what they want, due to the gap between the UI design image and textural query. To overcome that problem, design sharing sites like Dribbble ask users to attach tags when uploading tags for searching. However, designers may use different keywords to express the same meaning or miss some keywords for their UI design, resulting in the difficulty of retrieval. This project introduces an automatic approach to recover the missing tags for the UI, hence finding the missing UIs. Through an iterative open coding of thousands of existing tags, we construct a vocabulary of UI semantics with high-level categories.
+<!-- ## Overview
+Graphical User Interface (GUI) is ubiquitous, but good GUI design is challenging and time-consuming. Despite the enormous amount of UI designs existed online, it is still difficult for designers to efficiently find what they want, due to the gap between the UI design image and textural query. To overcome that problem, design sharing sites like Dribbble ask users to attach tags when uploading tags for searching. However, designers may use different keywords to express the same meaning or miss some keywords for their UI design, resulting in the difficulty of retrieval. This project introduces an automatic approach to recover the missing tags for the UI, hence finding the missing UIs. Through an iterative open coding of thousands of existing tags, we construct a vocabulary of UI semantics with high-level categories. -->
 
 ## Getting Started
 Put files in the following directory structure.
@@ -25,7 +25,7 @@ Put files in the following directory structure.
 
 ## Installation
 
-1. Download the [glove.6B.50d.txt](https://drive.google.com/open?id=1ublNdoeX8i5iTmwP_F-C1jS3SOzcHFT8)
+* Download the [glove.6B.50d.txt](https://drive.google.com/open?id=1ublNdoeX8i5iTmwP_F-C1jS3SOzcHFT8)
 
 ### Compilation
 
@@ -75,5 +75,4 @@ python3 test.py
 This project is contributed by [Sidong Feng](https://github.com/u6063820).
 
 ## License
-
-TODO: Write license
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)

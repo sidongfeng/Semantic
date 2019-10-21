@@ -11,13 +11,6 @@ This project is a web crawler, aimed to crawling designs from Dribbble associate
 3. (Optional) Include the ChromeDriver location in your PATH environment variable
 
 
-## Preparation
-
-First of all, clone the code
-```
-git clone ??
-```
-
 ### Compilation
 
 Install all the python dependencies using pip:
@@ -46,5 +39,4 @@ Optional arguments:
 This project is contributed by [Sidong Feng](https://github.com/u6063820).
 
 ## License
-
-TODO: Write license
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
