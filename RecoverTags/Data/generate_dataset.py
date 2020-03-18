@@ -226,4 +226,13 @@ if __name__ == "__main__":
     print('-'*10)
     print(args)
     print('-'*10)
-    main()
+    # main()
+    keys = ['mobile', 'website', 'chart', 'grid', 'form', 'list', 'dashboard', 'profile', 'signup', 'checkout', 'landing','weather', 'sport', 'game', 'finance', 'travel', 'food', 'ecommerce', 'music', 'pink', 'black', 'white', 'green', 'blue', 'red', 'yellow']
+    r = [13233, 11065, 342, 399, 456, 301, 1785, 677, 1152, 699, 2161, 310, 520, 572, 890, 994, 925, 1772, 1216, 321, 1268, 719, 447, 1021, 376, 521]
+    import matplotlib.pyplot as plt
+    plt.bar(keys,r,align='center') # A bar chart
+    plt.ylabel('# design images',fontsize=12)
+    plt.xticks(rotation=-60, fontsize=12)
+    plt.show()
+    print(min(r))
+    print(max(r))
