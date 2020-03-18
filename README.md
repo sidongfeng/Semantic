@@ -37,7 +37,10 @@ We show some examples in our dataset, top is the designs and bottom is its metad
 <img src="figures/figure2.png"/> 
 </div>
 
-Within the Dribbble site, the design creators can add at most 20 tags for their design work. !!!!!!!!!Read me!!!!!!! add statistic for dataset and show UI importance. Among the top 30 most common tags, approximately 25% are UI related (e.g., “ui”, “ux”, “app”, “web”, “interface”, etc.), which indicates that user interface design is one of the most popular design areas on Dribbble.
+Within the Dribbble site, the design creators can add at most 20 tags for their design work. 
+```diff
++ add statistic for dataset and show UI importance. Among the top 30 most common tags, approximately 25% are UI related (e.g., “ui”, “ux”, “app”, “web”, “interface”, etc.), which indicates that user interface design is one of the most popular design areas on Dribbble.
+```
 
 The full dataset can be downloaded via [Google Drive](https://drive.google.com/open?id=1UpoAxyY66zlRlJ7z4ZfZUWu_FDpPRhRb)
 
@@ -77,6 +80,9 @@ Additionally, to understand how our ensemble model make its decisions through th
 
 ### Dataset preparing
 Table 2 shows the statistics of our dataset for each tag. The dataset contains 50% positive and 50% negative samples.
+```diff
++ Updating statistics
+```
 <div style="color:#0000FF" align="center">
 <img src="figures/figure7.png"/> 
 </div>
@@ -85,7 +91,7 @@ Table 2 shows the statistics of our dataset for each tag. The dataset contains 5
 Table 2 shows the statistics of our dataset. In total, we collect 7,594 applications, 13,145 screenshots and 19,233 components. Besides, we split our dataset into train/val/test set, with the approximate ratio of 0.8/0.1/0.1. -->
 
 ### Training and Visualizing process
-Please follow the [Readme.md](RecoverTags/README.md) in RecoverTags folder.
+Please follow the [Readme.md](RecoverTags/README.md) instruction in RecoverTags folder.
 
 ## EVALUATION
 We set up several basic machine-learning baselines including the feature extraction (e.g., color histogram) with machine-learning classifiers (e.g., decision tree, SVM). **Results show that the improvement of our model is significant in all comparisons.**
@@ -103,7 +109,18 @@ Figure shows visualization of the salient features in our model leading to the f
 <img src="figures/figure10.png"/> 
 </div>
 
+Common causes for tag augmentation failure. 
+```diff
++ Figure with complete caption
+```
 
+## RETRIEVAL EVALUATION
+We conduct a pilot user study to evaluate the usefulness of the predicted addition tags for boot-strapping the UI design retrieval.
+```diff
++ Experiment and Result
+```
+
+<!-- Generalization&Usefulness contains all data we used in this part and the results from model(M), developers(A1,A2,A3) and Evaluator. -->
 
 ## License
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
