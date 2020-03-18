@@ -1,3 +1,8 @@
+```diff
+- 1. Create a new github
+- 2. Check any personal authorship
+- 3. Check dataset 
+```
 # From Lost to Found: Discover Missing UI Designs through Recovering Missing Semantics
 
 Design sharing sites provide UI designers with a platform to share their works and also an opportunity to get inspiration from others' designs. To facilitate management and search of millions of UI design images, many design sharing sites adopt collaborative tagging systems by distributing the work of categorization to the community.
