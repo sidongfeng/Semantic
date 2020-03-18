@@ -73,6 +73,9 @@ Table shows the 40 most frequent UI related tags with their abbreviations and sy
 <img src="figures/figure5.png"/> 
 </div>
 
+```diff
++ The full taxonomy can be downloaded via [Google Drive](https://drive.google.com/open?id=1UpoAxyY66zlRlJ7z4ZfZUWu_FDpPRhRb)
+```
 
 ## AUGMENT TAGS FOR THE UI DESIGN
 
