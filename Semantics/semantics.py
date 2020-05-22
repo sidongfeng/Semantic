@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed June 10 08:51:32 2019
-
-@author: Sidong Feng
 """
 import argparse
 import pandas as pd

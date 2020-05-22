@@ -41,11 +41,11 @@ We show some examples in our dataset, top is the designs and bottom is its metad
 <div style="color:#0000FF" align="center">
 <img src="figures/figure2.png"/> 
 </div>
-
-Within the Dribbble site, the design creators can add at most 20 tags for their design work. 
-```diff
+<!-- 
+Within the Dribbble site, the design creators can add at most 20 tags for their design work.  -->
+<!-- ```diff
 + add statistic for dataset and show UI importance. Among the top 30 most common tags, approximately 25% are UI related (e.g., “ui”, “ux”, “app”, “web”, “interface”, etc.), which indicates that user interface design is one of the most popular design areas on Dribbble.
-```
+``` -->
 
 The full dataset can be downloaded via [Google Drive](https://drive.google.com/open?id=1UpoAxyY66zlRlJ7z4ZfZUWu_FDpPRhRb)
 
@@ -73,9 +73,7 @@ Table shows the 40 most frequent UI related tags with their abbreviations and sy
 <img src="figures/figure5.png"/> 
 </div>
 
-```diff
-+ The full taxonomy can be downloaded via [Google Drive](https://drive.google.com/open?id=1UpoAxyY66zlRlJ7z4ZfZUWu_FDpPRhRb)
-```
+The full taxonomy can be viewed [here](RecoverTags/Data/categorization.py)
 
 ## AUGMENT TAGS FOR THE UI DESIGN
 
@@ -102,7 +100,16 @@ Table 2 shows the statistics of our dataset. In total, we collect 7,594 applicat
 Please follow the [Readme.md](RecoverTags/README.md) instruction in RecoverTags folder.
 
 ## EVALUATION
-We set up several basic machine-learning baselines including the feature extraction (e.g., color histogram) with machine-learning classifiers (e.g., decision tree, SVM). **Results show that the improvement of our model is significant in all comparisons.**
+We set up several basic machine-learning baselines including the feature extraction (e.g., color histogram) with machine-learning classifiers (e.g., decision tree, SVM). We further set up different settings of data splitting. **Results show that the improvement of our model is significant in all comparisons and in all data splitting.**
+
+<div style="color:#0000FF" align="center">
+<img src="figures/result.png"/> 
+</div>
+
+```diff
++ Update this figure with 4 new tables
+```
+A detailed result can be viewed here.
 <div style="color:#0000FF" align="center">
 <img src="figures/figure8.png"/> 
 </div>
@@ -118,15 +125,15 @@ Figure shows visualization of the salient features in our model leading to the f
 </div>
 
 Common causes for tag augmentation failure. 
-```diff
-+ Figure with complete caption
-```
+<div style="color:#0000FF" align="center">
+<img src="figures/failure.png"/> 
+</div>
 
 ## RETRIEVAL EVALUATION
-We conduct a pilot user study to evaluate the usefulness of the predicted addition tags for boot-strapping the UI design retrieval.
-```diff
-+ Experiment and Result
-```
+We conduct a pilot user study to evaluate the usefulness of the predicted addition tags for boot-strapping the UI design retrieval. This user study provides initial evidence of the usefulness of our method for enhancing the performance of tagging-based search.
+<div style="color:#0000FF" align="center">
+<img src="figures/userstudy.png"/> 
+</div>
 
 <!-- Generalization&Usefulness contains all data we used in this part and the results from model(M), developers(A1,A2,A3) and Evaluator. -->
 

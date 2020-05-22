@@ -2,7 +2,6 @@
 """
 Created on Fri Feb 3 12:40:12 2019
 
-@author: Sidong Feng
 """
 import os
 import argparse

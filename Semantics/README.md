@@ -34,9 +34,6 @@ Optional arguments:
 | --length                |   2        |  minimum length threshold
 | -h --help                 |               | show this help message and exit
 
-<!-- ## Authorship
-
-This project is contributed by [Sidong Feng](https://github.com/u6063820). -->
 
 ## License
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)

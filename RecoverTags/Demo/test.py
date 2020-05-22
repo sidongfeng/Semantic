@@ -7,7 +7,7 @@ from function import preprocess,loadGloveModel,loadCategory,get_pre_tag_id,write
 #
 import shutil
 
-THRESHOLD = 0.8
+THRESHOLD = 0.5
 
 # Device configuration
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

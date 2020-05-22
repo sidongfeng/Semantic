@@ -35,6 +35,10 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+0. Dataset setting
+```
+Put your images in Data/All_images and a corresponding Metadata.csv in Data/
+```
 1. Generate dataset on tag (default: blue)
 ```
 cd Data
@@ -69,10 +73,6 @@ cd Demo
 ```
 python3 test.py
 ```
-
-## Authorship
-
-This project is contributed by [Sidong Feng](https://github.com/u6063820).
 
 ## License
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
