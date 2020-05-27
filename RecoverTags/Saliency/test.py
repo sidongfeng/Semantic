@@ -47,8 +47,8 @@ def test_model(SAVE_MODEL_PATH,TEST_PATH='./Data/',SAVE_PATH='./OUT/'):
 	# load images
 	images_path = os.listdir(TEST_PATH)
 	if os.path.exists(TEST_PATH+'.DS_Store'):images_path.remove('.DS_Store')
-	images = list(map(lambda x: Image.open(TEST_PATH+x), images_path))
-	inputs  = [Compose([Resize((224,224)), ToTensor(), image_net_preprocessing])(x).unsqueeze(0) for x in images]  # add 1 dim for batch
+	images = list(map(lambda x: Image.open(TEST_PATH+x).convert('RGB'), images_path))
+	inputs  = [Compose([Resize((224,224)), ToTensor(), image_net_preprocessing ])(x).unsqueeze(0) for x in images]  # add 1 dim for batch
 	inputs = [i.to(device) for i in inputs]
 
 	# visualise images
